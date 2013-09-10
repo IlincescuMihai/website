@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />-->
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\markerclusterer.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="css\default.css" />
+    <Content Include="lib\data.js" />
     <None Include="lib\default.js" />
     <None Include="index.html" />
   </ItemGroup>

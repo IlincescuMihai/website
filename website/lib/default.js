@@ -1,30 +1,31 @@
-﻿// ------------------------------------------------
-// Copyright © Microsoft Corporation. All rights reserved
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-
-// http://www.apache.org/licenses/LICENSE-2.0
-
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//-------------------------------------------------
-(function () {
+﻿(function () {
     "use strict";
 
     window.addEventListener("load", function load(event) {
         window.removeEventListener("load", load, false);
-        init();
+        google.maps.event.addDomListener(window, 'load', initialize());
     }, false);
 
-    function init() {
-        document.getElementById("link").addEventListener("click", showAlert, false);
+    function initialize() {
+        var center = new google.maps.LatLng(37.4419, -122.1419);
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 3,
+            center: center,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var markers = [];
+        for (var i = 0; i < 1; i++) {
+            var dataPhoto = data.photos[i];
+            var latLng = new google.maps.LatLng(dataPhoto.latitude,
+                dataPhoto.longitude);
+            var marker = new google.maps.Marker({
+                position: latLng
+            });
+            markers.push(marker);
+        }
+        var markerCluster = new MarkerClusterer(map, markers);
     }
 
-    function showAlert() {
-        alert("Welcome to Pure HTML!");
-    }
 }());
